@@ -35,10 +35,19 @@
 #include <linux/project_info.h>
 //#endif
 
+#include <linux/display_state.h>
+
 #define DT_CMD_HDR 6
 #define DEFAULT_MDP_TRANSFER_TIME 14000
 
 #define VSYNC_DELAY msecs_to_jiffies(17)
+
+bool display_on = true;
+
+bool is_display_on()
+{
+	return display_on;
+}
 
 DEFINE_LED_TRIGGER(bl_led_trigger);
 
@@ -1517,6 +1526,9 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		pr_err("%s: Invalid input data\n", __func__);
 		return -EINVAL;
 	}
+	
+	display_on = true;
+	
     pr_err("%s start\n", __func__);
 //#endif
 	pinfo = &pdata->panel_info;
@@ -1684,6 +1696,8 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 		if (ctrl->off_cmds.cmd_cnt)
 			mdss_dsi_panel_cmds_send(ctrl, &ctrl->off_cmds, CMD_REQ_COMMIT);
 	}
+
+	display_on = false;
 
 	if (ctrl->ds_registered && pinfo->is_pluggable) {
 		mdss_dba_utils_video_off(pinfo->dba_data);
