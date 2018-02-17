@@ -437,41 +437,80 @@ int __init init_project_info(void)
 						__func__, project_info_desc->project_name, project_info_desc->hw_version,
 								project_info_desc->rf_v1, project_info_desc->rf_v2, project_info_desc->rf_v3 ,project_info_desc->platform_id);
 
-	switch(project_info_desc->hw_version) {
-		case 11:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "EVB");
-		    break;
-		case 12:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "T0");
-		    break;
-		case 13:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "T1");
-		    break;
-		case 14:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "EVT1");
-		    break;
-		case 15:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "EVT2");
-		    break;
-		case 21:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "EVT3");
-		    break;
-		case 22:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "DVT1");
-		    break;
-		case 23:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "PVT");
-		    break;
-		case 24:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "PVT1");
-		    break;
-		case 55:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s", project_info_desc->project_name, "BACKUP");
-		    break;
+	switch (project_info_desc->hw_version) {
+	case 11:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "EVB");
+	    break;
+	case 12:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "T0");
+	    break;
+	case 13:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "T1");
+	    break;
+	case 14:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "EVT1");
+	    break;
+	case 15:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "EVT2");
+	    break;
+	case 21:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "EVT3");
+	    break;
+	case 22:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "DVT1");
+	    break;
+	case 23:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "PVT");
+	    break;
+	case 24:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "PVT1");
+	    break;
+	case 33:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "EVB");
+	    break;
+	case 34:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "T0");
+	    break;
+	case 35:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+	    project_info_desc->project_name, "EVT1");
+	    break;
+	case 41:
+		snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "EVT2");
+		break;
+	case 42:
+		snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "DVT");
+		break;
+	case 43:
+		snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "PVT");
+		break;
+	case 53:
+		snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "BACKUP2");
+		break;
+	case 55:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%s %s",
+		project_info_desc->project_name, "BACKUP");
+	    break;
 
-		default:
-		    snprintf(mainboard_version, sizeof(mainboard_version), "%d", project_info_desc->hw_version);
-		    break;
+	default:
+	    snprintf(mainboard_version, sizeof(mainboard_version), "%d",
+		project_info_desc->hw_version);
+	    break;
 	}
 	//strcat(project_info_desc->project_name,mainboard_version);
 	push_component_info(MAINBOARD,mainboard_version, mainboard_manufacture);
